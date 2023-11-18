@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:monday_flutter/components/todoItem.dart';
 import 'package:monday_flutter/constrants/colors.dart';
+import '../models/todo.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  
+
+  const HomePage({super.key });
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  final todoList = Todo.todoList();
+
   @override
   Widget build(BuildContext context) {
+    
+  
     return Scaffold(
       backgroundColor: tdBGColor,
       appBar: AppBar(
@@ -30,27 +37,28 @@ class _HomePageState extends State<HomePage> {
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Image.asset('images/chika.png')),
-              )
+              ),
             ],
           )),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20 , vertical: 15),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         child: Column(
           children: [
             _searchBox(),
             Expanded(
-              child: ListView(
-                children: [ Container(
-                  margin: EdgeInsets.only(top: 50 , bottom: 20),
-                  child: Text('All Todo' , style: TextStyle(fontWeight: FontWeight.w500 , fontSize: 30),),
+              child: ListView(children: [
+                Container(
+                  margin: EdgeInsets.only(top: 50, bottom: 20),
+                  child: Text(
+                    'Search',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 30),
                   ),
-
-                  TodoItem()
-                ]
-              ),
+                ),
+                for (Todo todo in todoList) 
+                TodoItem(todo: todo,)
+              ]),
             ),
-            
-            ],
+          ],
         ),
       ),
     );
