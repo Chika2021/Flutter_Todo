@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                         todo: todoo,
                         onTodoChanged: _handleTodoChange,
                         onDeleteItem: _handleDelete,
-                      )
+                      ),
                   ]),
                 ),
               ],
@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                           offset: Offset(0.0, 0.0),
                           blurRadius: 10.0,
                           spreadRadius: 0.0,
-                        )
+                        ),
                       ],
                     ),
                     child: TextField(
