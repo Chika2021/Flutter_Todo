@@ -9,10 +9,10 @@ class Todo {
     return [
       Todo(id: '01', todoText: 'Code Python', isDone: true),
       Todo(id: '02', todoText: 'Push my Code to GitHub', isDone: true),
-      Todo(id: '03', todoText: 'Check My Emails', isDone: true),
-      Todo(id: '04', todoText: 'Work in My Flutter App', isDone: true),
-      Todo(id: '06', todoText: 'Dinner With Favour', isDone: true),
-      Todo(id: '07', todoText: 'Work on My JavaScript Project', isDone: true),
+      Todo(id: '03', todoText: 'Check My Emails'),
+      Todo(id: '04', todoText: 'Work in My Flutter App'),
+      Todo(id: '06', todoText: 'Dinner With Favour'),
+      Todo(id: '07', todoText: 'Work on My JavaScript Project'),
     ];
   }
 }

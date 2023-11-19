@@ -4,7 +4,14 @@ import 'package:monday_flutter/models/todo.dart';
 
 class TodoItem extends StatelessWidget {
   final Todo todo;
-  const TodoItem({super.key , required this.todo});
+  final onTodoChanged;
+  final onDeleteItem;
+
+  const TodoItem(
+      {super.key,
+      required this.todo,
+      required this.onTodoChanged,
+      required this.onDeleteItem});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +19,7 @@ class TodoItem extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 20),
       child: ListTile(
         onTap: () {
-          print('Value clicked');
+          onTodoChanged(todo);
         },
         contentPadding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
         shape: RoundedRectangleBorder(
@@ -20,7 +27,7 @@ class TodoItem extends StatelessWidget {
         ),
         tileColor: Colors.white,
         leading: Icon(
-          Icons.check_box,
+          todo.isDone ? Icons.check_box : Icons.check_box_outline_blank,
           color: tdBlue,
         ),
         title: Text(
@@ -28,7 +35,7 @@ class TodoItem extends StatelessWidget {
           style: TextStyle(
               fontSize: 16,
               color: tdBlack,
-              decoration: TextDecoration.lineThrough),
+              decoration: todo.isDone ? TextDecoration.lineThrough : null),
         ),
         trailing: Container(
           height: 35,
@@ -40,7 +47,9 @@ class TodoItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
           ),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              onDeleteItem(todo.id);
+            },
             icon: Icon(Icons.delete),
             color: Colors.white,
             iconSize: 18,
